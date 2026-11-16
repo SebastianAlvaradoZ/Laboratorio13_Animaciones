@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio1Visibilidad
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio2Color
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio3TamanoPosicion
+import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio4Contenido
 
 data class Ejercicio(
     val titulo: String,
@@ -27,5 +28,10 @@ val listaEjercicios: List<Ejercicio> = listOf(
         titulo = "Ejercicio 3: Tamaño y posición",
         descripcion = "animateDpAsState y Modifier.offset, y el orden de modificadores",
         contenido = { Ejercicio3TamanoPosicion() }
+    ),
+    Ejercicio(
+        titulo = "Ejercicio 4: AnimatedContent",
+        descripcion = "Transición entre estados Cargando, Contenido y Error",
+        contenido = { Ejercicio4Contenido() }
     ),
 )
