@@ -1,5 +1,6 @@
 package com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -69,17 +70,7 @@ fun Ejercicio1Visibilidad() {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text("AnimatedVisibility", style = MaterialTheme.typography.labelLarge)
                 Spacer(modifier = Modifier.height(8.dp))
-                Box(modifier = Modifier.size(140.dp), contentAlignment = Alignment.Center) {
-                    // Se usa el nombre completo porque dentro de un Box anidado en un Column
-                    // Kotlin intenta usar la versión ColumnScope.AnimatedVisibility y falla
-                    androidx.compose.animation.AnimatedVisibility(
-                        visible = visible,
-                        enter = fadeIn(animationSpec = tween(durationMillis = DURACION_MS)),
-                        exit = fadeOut(animationSpec = tween(durationMillis = DURACION_MS))
-                    ) {
-                        CuadroDeColor(color = Color(0xFF6750A4), texto = "fade")
-                    }
-                }
+                CuadroAnimado(visible = visible)
             }
         }
 
@@ -101,5 +92,21 @@ private fun CuadroDeColor(color: Color, texto: String) {
         contentAlignment = Alignment.Center
     ) {
         Text(text = texto, color = Color.White, style = MaterialTheme.typography.titleLarge)
+    }
+}
+
+// Va en una función aparte para que AnimatedVisibility no quede dentro del Column.
+// Si se escribe dentro del Column, Kotlin elige la versión ColumnScope.AnimatedVisibility
+// y da error de compilación al estar anidada dentro de un Box.
+@Composable
+private fun CuadroAnimado(visible: Boolean) {
+    Box(modifier = Modifier.size(140.dp), contentAlignment = Alignment.Center) {
+        AnimatedVisibility(
+            visible = visible,
+            enter = fadeIn(animationSpec = tween(durationMillis = DURACION_MS)),
+            exit = fadeOut(animationSpec = tween(durationMillis = DURACION_MS))
+        ) {
+            CuadroDeColor(color = Color(0xFF6750A4), texto = "fade")
+        }
     }
 }
