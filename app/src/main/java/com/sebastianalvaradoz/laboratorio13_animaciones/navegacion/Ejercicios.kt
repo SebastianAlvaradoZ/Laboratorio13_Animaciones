@@ -3,6 +3,7 @@ package com.sebastianalvaradoz.laboratorio13_animaciones.navegacion
 import androidx.compose.runtime.Composable
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio1Visibilidad
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio2Color
+import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio3TamanoPosicion
 
 data class Ejercicio(
     val titulo: String,
@@ -21,5 +22,10 @@ val listaEjercicios: List<Ejercicio> = listOf(
         titulo = "Ejercicio 2: animateColorAsState",
         descripcion = "Transición de color azul ↔ verde con tween y spring",
         contenido = { Ejercicio2Color() }
+    ),
+    Ejercicio(
+        titulo = "Ejercicio 3: Tamaño y posición",
+        descripcion = "animateDpAsState y Modifier.offset, y el orden de modificadores",
+        contenido = { Ejercicio3TamanoPosicion() }
     ),
 )
