@@ -5,11 +5,14 @@ import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio1Vis
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio2Color
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio3TamanoPosicion
 import com.sebastianalvaradoz.laboratorio13_animaciones.ejercicios.Ejercicio4Contenido
+import com.sebastianalvaradoz.laboratorio13_animaciones.juego.JuegoAtrapaLaEstrella
 
 data class Ejercicio(
     val titulo: String,
     val descripcion: String,
-    val contenido: @Composable () -> Unit
+    val contenido: @Composable () -> Unit,
+    // true = se muestra con una tarjeta especial en el menú (para el juego)
+    val destacado: Boolean = false
 )
 
 // Cada ejercicio nuevo se agrega a esta lista
@@ -33,5 +36,11 @@ val listaEjercicios: List<Ejercicio> = listOf(
         titulo = "Ejercicio 4: AnimatedContent",
         descripcion = "Transición entre estados Cargando, Contenido y Error",
         contenido = { Ejercicio4Contenido() }
+    ),
+    Ejercicio(
+        titulo = "Juego: Atrapa la Estrella",
+        descripcion = "Ejercicio final · combina todas las animaciones",
+        contenido = { JuegoAtrapaLaEstrella() },
+        destacado = true
     ),
 )
